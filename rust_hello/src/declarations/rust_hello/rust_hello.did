@@ -1,0 +1,7 @@
+service : {
+
+    "store_message": (text,text,text) -> (text);
+    "store_pub_key": (text,text,text) -> (text);
+    "update_key": (text) -> ();
+    "get_public_key": () -> (text);
+}

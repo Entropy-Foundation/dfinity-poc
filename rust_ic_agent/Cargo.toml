@@ -1,0 +1,16 @@
+[package]
+name = "rust_ic_agent"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ic-agent = {version="0.7.0", features=["reqwest"] }
+ic-utils = "0.5.0"
+tokio = { version = "1", features = ["full"] }
+reqwest = "0.11.4"
+candid = "0.7.5"
+serde = "1"
+garcon = "0.2.3"
+ring = { version = "0.16.11", features = ["std"] }
