@@ -7,10 +7,6 @@ document.getElementById("clickMeBtn").addEventListener("click", async () => {
 
   document.getElementById("greeting").innerText = "loading... please wait...";
 
-  await rust_hello.update_key(publicKey);
-  console.log("key updated successfully");
-  document.getElementById("greeting").innerText = "public key updated successfully.. Please wait for verification...";
-
   // Interact with dfinity_dkg actor, calling the greet method
   const out = await rust_hello.store_message(publicKey, sign, message);
   console.log("verified successfully", out);
@@ -18,13 +14,15 @@ document.getElementById("clickMeBtn").addEventListener("click", async () => {
   document.getElementById("greeting").innerText = out;
 });
 
-
 document.getElementById("clickMeBtn2").addEventListener("click", async () => {
-  const publicKey = document.getElementById("inputOldPublicKey").value.toString();
+  const publicKey = document
+    .getElementById("inputOldPublicKey")
+    .value.toString();
   const sign = document.getElementById("inputSign2").value.toString();
   const message = document.getElementById("inputNewPublicKey").value.toString();
 
-  document.getElementById("out2Section").innerText = "loading... please wait...";
+  document.getElementById("out2Section").innerText =
+    "loading... please wait...";
 
   // await rust_hello.update_key(publicKey);
   // console.log("key updated successfully");
@@ -37,13 +35,29 @@ document.getElementById("clickMeBtn2").addEventListener("click", async () => {
   document.getElementById("out2Section").innerText = out;
 });
 
+document
+  .getElementById("setPublicKeySubmit")
+  .addEventListener("click", async () => {
+    const element = document.getElementById("setPublicKeyOutput");
+    element.innerText = "please wait...";
+    const publicKey = document
+      .getElementById("inputSetPublicKey")
+      .value.toString();
 
-document.getElementById("getPublicKey").addEventListener("click", async () => {
+    // Interact with dfinity_dkg actor, calling the greet method
+    const out = await rust_hello.update_key(publicKey);
 
-  document.getElementById("greeting").innerText = "getting public key... please wait...";
+    element.innerText = out;
+  });
 
-  // Interact with dfinity_dkg actor, calling the greet method
-  const out = await rust_hello.get_public_key();
+document
+  .getElementById("fetchPublicKeySubmit")
+  .addEventListener("click", async () => {
+    const element = document.getElementById("fetchPublicKeyOutput");
+    element.innerText = "getting public key... please wait...";
 
-  document.getElementById("greeting").innerText = out;
-});
+    // Interact with dfinity_dkg actor, calling the greet method
+    const out = await rust_hello.get_public_key();
+
+    element.innerText = out;
+  });

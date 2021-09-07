@@ -33,3 +33,7 @@ section {
 #greeting:empty {
   display: none;
 }
+
+.output {
+  word-break: break-all;
+}
