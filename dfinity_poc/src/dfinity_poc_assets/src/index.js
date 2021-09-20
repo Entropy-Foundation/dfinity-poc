@@ -1,4 +1,4 @@
-import { rust_hello } from "../../declarations/rust_hello";
+import { dfinity_poc } from "../../declarations/dfinity_poc";
 
 document.getElementById("clickMeBtn").addEventListener("click", async () => {
   const publicKey = document.getElementById("inputPublicKey").value.toString();
@@ -8,7 +8,7 @@ document.getElementById("clickMeBtn").addEventListener("click", async () => {
   document.getElementById("greeting").innerText = "loading... please wait...";
 
   // Interact with dfinity_dkg actor, calling the greet method
-  const out = await rust_hello.store_message(publicKey, sign, message);
+  const out = await dfinity_poc.store_message(publicKey, sign, message);
   console.log("verified successfully", out);
 
   document.getElementById("greeting").innerText = out;
@@ -24,12 +24,12 @@ document.getElementById("clickMeBtn2").addEventListener("click", async () => {
   document.getElementById("out2Section").innerText =
     "loading... please wait...";
 
-  // await rust_hello.update_key(publicKey);
+  // await dfinity_poc.update_key(publicKey);
   // console.log("key updated successfully");
   // document.getElementById("out2Section").innerText = "public key updated successfully.";
 
   // Interact with dfinity_dkg actor, calling the greet method
-  const out = await rust_hello.store_pub_key(publicKey, sign, message);
+  const out = await dfinity_poc.store_pub_key(publicKey, sign, message);
   console.log("verified successfully", out);
 
   document.getElementById("out2Section").innerText = out;
@@ -45,7 +45,7 @@ document
       .value.toString();
 
     // Interact with dfinity_dkg actor, calling the greet method
-    const out = await rust_hello.update_key(publicKey);
+    const out = await dfinity_poc.update_key(publicKey);
 
     element.innerText = out;
   });
@@ -57,7 +57,7 @@ document
     element.innerText = "getting public key... please wait...";
 
     // Interact with dfinity_dkg actor, calling the greet method
-    const out = await rust_hello.get_public_key();
+    const out = await dfinity_poc.get_public_key();
 
     element.innerText = out;
   });

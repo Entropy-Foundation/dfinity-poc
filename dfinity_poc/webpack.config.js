@@ -8,7 +8,11 @@ let localCanisters, prodCanisters, canisters;
 
 function initCanisterIds() {
   try {
-    localCanisters = require(path.resolve(".dfx", "local", "canister_ids.json"));
+    localCanisters = require(path.resolve(
+      ".dfx",
+      "local",
+      "canister_ids.json"
+    ));
   } catch (error) {
     console.log("No local canister_ids.json found. Continuing production");
   }
@@ -32,12 +36,7 @@ function initCanisterIds() {
 initCanisterIds();
 
 const isDevelopment = process.env.NODE_ENV !== "production";
-const asset_entry = path.join(
-  "src",
-  "rust_hello_assets",
-  "src",
-  "index.html"
-);
+const asset_entry = path.join("src", "dfinity_poc_assets", "src", "index.html");
 
 module.exports = {
   target: "web",
@@ -64,7 +63,7 @@ module.exports = {
   },
   output: {
     filename: "index.js",
-    path: path.join(__dirname, "dist", "rust_hello_assets"),
+    path: path.join(__dirname, "dist", "dfinity_poc_assets"),
   },
 
   // Depending in the language or framework you are using for
@@ -81,19 +80,19 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, asset_entry),
-      cache: false
+      cache: false,
     }),
     new CopyPlugin({
       patterns: [
         {
-          from: path.join(__dirname, "src", "rust_hello_assets", "assets"),
-          to: path.join(__dirname, "dist", "rust_hello_assets"),
+          from: path.join(__dirname, "src", "dfinity_poc_assets", "assets"),
+          to: path.join(__dirname, "dist", "dfinity_poc_assets"),
         },
       ],
     }),
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
-      RUST_HELLO_CANISTER_ID: canisters["rust_hello"]
+      NODE_ENV: "development",
+      DFINITY_POC_CANISTER_ID: canisters["dfinity_poc"],
     }),
     new webpack.ProvidePlugin({
       Buffer: [require.resolve("buffer/"), "Buffer"],
@@ -112,7 +111,7 @@ module.exports = {
       },
     },
     hot: true,
-    contentBase: path.resolve(__dirname, "./src/rust_hello_assets"),
-    watchContentBase: true
+    contentBase: path.resolve(__dirname, "./src/dfinity_poc_assets"),
+    watchContentBase: true,
   },
 };

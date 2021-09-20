@@ -1,0 +1,17 @@
+{
+  "canisters": {
+    "dfinity_poc": {
+      "build": "cargo build --target wasm32-unknown-unknown --package dfinity_poc --release",
+      "candid": "src/dfinity_poc/dfinity_poc.did",
+      "wasm": "target/wasm32-unknown-unknown/release/dfinity_poc.wasm",
+      "type": "custom"
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}

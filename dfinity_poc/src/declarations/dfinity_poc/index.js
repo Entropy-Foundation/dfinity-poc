@@ -1,16 +1,16 @@
 import { Actor, HttpAgent } from "@dfinity/agent";
 
 // Imports and re-exports candid interface
-import { idlFactory } from './inter_rs.did.js';
-export { idlFactory } from './inter_rs.did.js';
+import { idlFactory } from './dfinity_poc.did.js';
+export { idlFactory } from './dfinity_poc.did.js';
 // CANISTER_ID is replaced by webpack based on node environment
-export const canisterId = process.env.INTER_RS_CANISTER_ID;
+export const canisterId = process.env.DFINITY_POC_CANISTER_ID;
 
 /**
  * 
  * @param {string | import("@dfinity/principal").Principal} canisterId Canister ID of Agent
  * @param {{agentOptions?: import("@dfinity/agent").HttpAgentOptions; actorOptions?: import("@dfinity/agent").ActorConfig}} [options]
- * @return {import("@dfinity/agent").ActorSubclass<import("./inter_rs.did.js")._SERVICE>}
+ * @return {import("@dfinity/agent").ActorSubclass<import("./dfinity_poc.did.js")._SERVICE>}
  */
  export const createActor = (canisterId, options) => {
   const agent = new HttpAgent({ ...options?.agentOptions });
@@ -32,7 +32,7 @@ export const canisterId = process.env.INTER_RS_CANISTER_ID;
 };
   
 /**
- * A ready-to-use agent for the inter_rs canister
- * @type {import("@dfinity/agent").ActorSubclass<import("./inter_rs.did.js")._SERVICE>}
+ * A ready-to-use agent for the dfinity_poc canister
+ * @type {import("@dfinity/agent").ActorSubclass<import("./dfinity_poc.did.js")._SERVICE>}
  */
- export const inter_rs = createActor(canisterId);
+ export const dfinity_poc = createActor(canisterId);
