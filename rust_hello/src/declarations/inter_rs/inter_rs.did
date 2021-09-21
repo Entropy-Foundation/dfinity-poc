@@ -1,4 +1,0 @@
-service : {
-    "store_message": (text,text,text) -> (text);
-    "update_key": (text) -> ();
-}
