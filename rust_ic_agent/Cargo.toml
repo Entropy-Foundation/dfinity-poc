@@ -14,3 +14,4 @@ candid = "0.7.5"
 serde = "1"
 garcon = "0.2.3"
 ring = { version = "0.16.11", features = ["std"] }
+serde_json = {version = "1.0"}

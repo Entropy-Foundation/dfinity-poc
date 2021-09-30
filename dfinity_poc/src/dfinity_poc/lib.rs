@@ -88,7 +88,7 @@ fn store_pub_key(pub_key: String, sign: String, msg: String) -> String {
                 let is_verify: bool = secp.verify(&message, &sig, &public_key).is_ok();
                 if is_verify {
                     // let msg1 = String::from("04").push_str(&msg);
-                    let msg1 = format!("04{msg}", msg = msg.clone());
+                    let msg1 = format!("{msg}", msg = msg.clone());
                     PUBLIC_KEY.clear();
                     PUBLIC_KEY.push_str(msg1.as_str());
                     "New Public key inserted".to_string()
