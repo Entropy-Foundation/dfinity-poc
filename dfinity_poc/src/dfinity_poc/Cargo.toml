@@ -9,7 +9,7 @@ crate-type = ["cdylib"]
 path="lib.rs"
 
 [dependencies]
-secp256k1 = "0.20.3"
+secp256k1 = "0.22.2"
 hex = "0.4.3"
 ic-cdk = "0.3"
 ic-cdk-macros = "0.3"
